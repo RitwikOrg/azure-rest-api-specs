@@ -2424,7 +2424,7 @@
         "vpnSites": {
           "type": "array",
           "items": {
-            "$ref": "./network.json#/definitions/SubResource"
+            "type": "string"
           },
           "description": "List of resource-ids of the vpn-sites for which config is to be downloaded."
         },
