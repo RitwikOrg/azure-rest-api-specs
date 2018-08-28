@@ -61,6 +61,7 @@
                     "tags": {}
                 },
                 "connectionType": "IPsec",
+                "connectionProtocol": "IKEv2",
                 "routingWeight": 0,
                 "sharedKey": "Abc123",
                 "enableBgp": false,
@@ -90,6 +91,7 @@
                         "properties": {}
                     },
                     "connectionType": "IPsec",
+                    "connectionProtocol": "IKEv2",
                     "routingWeight": 0,
                     "sharedKey": "Abc123",
                     "enableBgp": false,
@@ -119,6 +121,7 @@
                         "properties": {}
                     },
                     "connectionType": "IPsec",
+                    "connectionProtocol": "IKEv2",
                     "routingWeight": 0,
                     "sharedKey": "Abc123",
                     "enableBgp": false,

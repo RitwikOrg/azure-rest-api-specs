@@ -26,6 +26,7 @@
                         "properties": {}
                       },
                       "connectionType": "IPsec",
+                      "connectionProtocol": "IKEv1",
                       "routingWeight": 0,
                       "enableBgp": false,
                       "usePolicyBasedTrafficSelectors": false,
@@ -52,6 +53,7 @@
                         "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/localNetworkGateways/localgw2"
                       },
                       "connectionType": "IPsec",
+                      "connectionProtocol": "IKEv2",
                       "routingWeight": 0,
                       "enableBgp": false,
                       "usePolicyBasedTrafficSelectors": false,

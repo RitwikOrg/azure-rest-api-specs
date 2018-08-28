@@ -18,6 +18,7 @@
             "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1"
           },
           "connectionStatus": "Connected",
+          "connectionProtocol": "IKEv2",
           "ingressBytesTransferred": 0,
           "egressBytesTransferred": 0,
           "routingWeight": 0,
