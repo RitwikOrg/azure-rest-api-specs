@@ -2682,7 +2682,7 @@
       },
       "allOf": [
         {
-          "$ref": "./network.json#/definitions/Resource"
+          "$ref": "./network.json#/definitions/SubResource"
         }
       ],
       "description": "VpnConnection Resource."
@@ -2742,7 +2742,7 @@
       },
       "allOf": [
         {
-          "$ref": "./network.json#/definitions/Resource"
+          "$ref": "./network.json#/definitions/SubResource"
         }
       ],
       "description": "HubVirtualNetworkConnection Resource."
