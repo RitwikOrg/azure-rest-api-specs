@@ -2630,7 +2630,6 @@
         "connectionBandwidth": {
           "type": "integer",
           "format": "int32",
-          "readOnly": true,
           "description": "Expected bandwidth in MBPS."
         },
         "sharedKey": {
