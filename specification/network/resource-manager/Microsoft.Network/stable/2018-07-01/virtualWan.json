@@ -1670,7 +1670,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWanName}/p2sVpnServerConfigurations/{p2sVpnServerConfigurationName}": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWanName}/p2sVpnServerConfigurations/{p2SVpnServerConfigurationName}": {
       "get": {
         "operationId": "P2SVpnServerConfigurations_Get",
         "x-ms-examples": {
@@ -1698,7 +1698,7 @@
             "description": "The name of the VirtualWan."
           },
           {
-            "name": "p2sVpnServerConfigurationName",
+            "name": "p2SVpnServerConfigurationName",
             "in": "path",
             "required": true,
             "type": "string",
@@ -1726,7 +1726,7 @@
       "put": {
         "operationId": "P2SVpnServerConfigurations_CreateOrUpdate",
         "x-ms-examples": {
-          "VpnConnectionPut": {
+          "P2SVpnServerConfigurationPut": {
             "$ref": "./examples/P2SVpnServerConfigurationPut.json"
           }
         },
@@ -1750,7 +1750,7 @@
             "description": "The name of the VirtualWan."
           },
           {
-            "name": "p2sVpnServerConfigurationName",
+            "name": "p2SVpnServerConfigurationName",
             "in": "path",
             "required": true,
             "type": "string",
@@ -1760,7 +1760,7 @@
             "$ref": "./network.json#/parameters/ApiVersionParameter"
           },
           {
-            "name": "P2SVpnServerConfigurationParameters",
+            "name": "p2SVpnServerConfigurationParameters",
             "in": "body",
             "required": true,
             "schema": {
@@ -1818,7 +1818,7 @@
             "description": "The name of the VirtualWan."
           },
           {
-            "name": "p2sVpnServerConfigurationName",
+            "name": "p2SVpnServerConfigurationName",
             "in": "path",
             "required": true,
             "type": "string",
@@ -1974,7 +1974,7 @@
             "$ref": "./network.json#/parameters/ApiVersionParameter"
           },
           {
-            "name": "p2sVpnGatewayParameters",
+            "name": "p2SVpnGatewayParameters",
             "in": "body",
             "required": true,
             "schema": {
@@ -2292,9 +2292,9 @@
           "description": "The office local breakout category.",
           "$ref": "#/definitions/OfficeTrafficCategory"
         },
-        "p2sVpnServerConfigurations": {
+        "p2SVpnServerConfigurations": {
           "type": "array",
-          "description": "list of all P2SVpnServerConfigurationss to the virtual wan.",
+          "description": "list of all P2SVpnServerConfigurations associated with the virtual wan.",
           "items": {
             "$ref": "#/definitions/P2SVpnServerConfiguration"
           }
@@ -2445,6 +2445,10 @@
           "$ref": "./network.json#/definitions/SubResource",
           "description": "The VpnGateway associated with this VirtualHub"
         },
+        "p2SVpnGateway": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The P2SVpnGateway associated with this VirtualHub"
+        },		
         "expressRouteGateway": {
           "$ref": "./network.json#/definitions/SubResource",
           "description": "The expressRouteGateway associated with this VirtualHub"
@@ -2619,7 +2623,7 @@
           "description": "The connection status.",
           "$ref": "#/definitions/VpnConnectionStatus"
         },
-        "connectionProtocol": {
+        "vpnConnectionProtocolType": {
           "description": "Connection protocol used for this connection",
           "$ref":  "./virtualNetworkGateway.json#/definitions/ConnectionProtocol"
         },
@@ -3095,6 +3099,10 @@
     },	
 	"P2SVpnServerConfigurationProperties": {
       "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name."
+        },	  
         "vpnProtocols": {
           "type": "array",
           "items": {
@@ -3111,28 +3119,28 @@
           },
           "description": "vpnProtocols for the P2SVpnServerConfiguration."
         },
-        "p2sVpnServerConfigVpnClientRootCertificates": {
+        "p2SVpnServerConfigVpnClientRootCertificates": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/P2SVpnServerConfigVpnClientRootCertificate"
           },
           "description": "VPN client root certificate of P2SVpnServerConfiguration."
         },
-        "p2sVpnServerConfigVpnClientRevokedCertificates": {
+        "p2SVpnServerConfigVpnClientRevokedCertificates": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/P2SVpnServerConfigVpnClientRevokedCertificate"
           },
           "description": "VPN client revoked certificate of P2SVpnServerConfiguration."
         },
-        "p2sVpnServerConfigRadiusServerRootCertificates": {
+        "p2SVpnServerConfigRadiusServerRootCertificates": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/P2SVpnServerConfigRadiusServerRootCertificate"
           },
           "description": "Radius Server root certificate of P2SVpnServerConfiguration."
         },
-        "p2sVpnServerConfigRadiusClientRootCertificates": {
+        "p2SVpnServerConfigRadiusClientRootCertificates": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/P2SVpnServerConfigRadiusClientRootCertificate"
@@ -3154,12 +3162,21 @@
           "type": "string",
           "description": "The radius secret property of the P2SVpnServerConfiguration resource for for point to site client connection."
         },
-        "p2sVpnGateways": {
+        "provisioningState": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The provisioning state of the P2SVpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'."
+        },
+        "p2SVpnGateways": {
           "type": "array",
           "readOnly": true,
           "items": {
             "$ref": "./network.json#/definitions/SubResource"
           }
+        },
+        "etag": {
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
         }
       },
       "description": "Parameters for P2SVpnServerConfiguration"
@@ -3172,7 +3189,6 @@
         },
         "name": {
           "type": "string",
-          "readOnly": true,
           "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
         },
         "etag": {
@@ -3183,7 +3199,7 @@
       },
       "allOf": [
         {
-          "$ref": "./network.json#/definitions/Resource"
+          "$ref": "./network.json#/definitions/SubResource"
         }
       ],
       "description": "P2SVpnServerConfiguration Resource."
@@ -3239,10 +3255,6 @@
           "$ref": "./network.json#/definitions/SubResource",
           "description": "The VirtualHub to which the gateway belongs"
         },
-        "bgpSettings": {
-          "$ref": "./virtualNetworkGateway.json#/definitions/BgpSettings",
-          "description": "Local network gateway's BGP speaker settings."
-        },
         "provisioningState": {
           "description": "The provisioning state of the resource.",
           "$ref": "#/definitions/ProvisioningState"
@@ -3252,7 +3264,7 @@
           "format": "int32",
           "description": "The scale unit for this p2s vpn gateway."
         },
-        "p2sVpnServerConfiguration": {
+        "p2SVpnServerConfiguration": {
           "$ref": "./network.json#/definitions/SubResource",
           "description": "The P2SVpnServerConfiguration to which the p2sVpnGateway is attached to."
         },
@@ -3262,11 +3274,8 @@
         },
         "vpnClientConnectionHealth": {
           "readOnly": true,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/VpnClientConnectionHealth"
-          },
-          "description": "Collection of the all P2S vpnclients' connection health status."
+		  "$ref": "#/definitions/VpnClientConnectionHealth",
+		  "description": "All P2S vpnclients' connection health status."
         }
       },
       "description": "Parameters for P2SVpnGateway"
